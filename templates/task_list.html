@@ -2,12 +2,33 @@
 <html>
 	<head>
 		<title>Lista de Tarefas</title>
+		<style>
+			.task-done {
+				text-decoration: line-through;
+			}
+			a {
+				text-decoration: none;
+				color: black;
+			}
+		</style>
+		<script>
+			function completeTask(event) {
+				event.preventDefault();
+				event.target.classList.add('task-done');
+			}
+		</script>
 	</head>
 	<body>
 		<h1>Lista de Tarefas</h1>
 		<ul>
 			{% for task in tasks %}
-				<li>{{ task }}</li>
+				{% if task.done %}
+					<li class="task-done">{{ task }}</li>
+				{% else %}
+					<li>
+						<a href="#" onclick="completeTask(event)">{{ task }}</a>
+					</li>
+				{% endif %}
 			{% endfor %}
 		</ul>
 
