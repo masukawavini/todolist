@@ -10,5 +10,11 @@
 				<li>{{ task }}</li>
 			{% endfor %}
 		</ul>
+
+		<form method="POST" action="{{ url_for('add_task') }}">
+			<label for="task">Nova Tarefa:</label>
+			<input type="text" id="task" name="task">
+			<button type="submit">Adicionar</button>
+		</form>
 	</body>
 </html>
